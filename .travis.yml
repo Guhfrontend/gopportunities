@@ -1,0 +1,17 @@
+language: go
+
+go:
+  - "1.18"
+  - "1.19"
+  - "tip"
+
+env:
+  - CGO_ENABLED=0
+
+before_install:
+  - go get -u golang.org/x/lint/golint
+
+script:
+  - golint ./...
+  - go test -v ./...
+  - go build -v ./...
